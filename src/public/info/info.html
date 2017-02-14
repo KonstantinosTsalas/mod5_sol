@@ -1,0 +1,16 @@
+
+<div class="container">
+	<div ng-if="info.userInfo">
+		<h1>User info</h1>
+		<div>First Name: {{info.userInfo.first_name}}</div>
+		<div>Last Name: {{info.userInfo.last_name}}</div>
+		<div>Email: {{info.userInfo.email}}</div>
+		<div ng-if="info.userInfo.phone">Phone: {{info.userInfo.phone}}</div><br><br><br>
+		<div>Favourite Menu Item: {{info.userInfo.itemName}}</div>
+		<div>Description: {{info.userInfo.itemDescription}}</div><br>
+		<img class="img-responsive" width="250" height="150" ng-src="{{info.basePath}}/images/{{info.userInfo.shortname}}.jpg" alt="{{info.userInfo.itemName}}">
+	</div>
+	<div ng-if="info.empty">
+		Not Signed Up Yet!!!! <a ui-sref="public.signUp">Sign Up Now!!!!</a>
+	</div>
+</div>

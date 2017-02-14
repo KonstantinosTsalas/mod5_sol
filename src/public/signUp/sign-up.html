@@ -1,0 +1,61 @@
+<div class="container">
+	<fieldset>
+		<legend>Sign Up</legend>
+		<form name="signForm" novalidate>
+			<input type="text" name="firstname" placeholder="First Name..."
+				ng-model="signUp.firstname"
+				required
+				minlength="4"
+				ng-maxlength="10">
+				<span ng-if="(signForm.firstname.$error.minlength || signForm.firstname.$error.required) && signForm.firstname.$touched">
+				First name must be at least 4 characters long
+				</span>
+				<span ng-if="signForm.firstname.$error.maxlength && signForm.firstname.$touched">
+				First name must not be longer than 10 characters
+				</span>
+				<br>
+
+			<input type="text" name="lastname" placeholder="Last Name..."
+				ng-model="signUp.lastname"
+				required
+				minlength="4"
+				ng-maxlength="10">
+				<span ng-if="(signForm.lastname.$error.minlength || signForm.lastname.$error.required) && signForm.lastname.$touched">
+				Last name must be at least 4 characters long
+				</span>
+				<span ng-if="signForm.lastname.$error.maxlength && signForm.lastname.$touched">
+				Last name must not be longer than 10 characters
+				</span>
+				<br>
+
+			<input type="email" name="email" placeholder="Email"
+				ng-model="signUp.email"
+				required>
+				<span ng-if="signForm.email.$invalid && signForm.email.$touched">
+				Must be a valid email address: someone@something format
+				</span>
+				<br>
+
+			<input type="text" name="phone" placeholder="Phone ###-###-####"
+				ng-model="signUp.phone"
+				pattern="(\d{3})-(\d{3})-(\d{4})">
+				<span ng-if="signForm.phone.$invalid && signForm.phone.$touched">
+				Phone must be in the format ###-###-####
+				</span>
+				<br>
+
+			<input tyoe="text" name="shortname" placeholder="Menu number for faourite dish!"
+				ng-model="signUp.shortname">
+				<span ng-if="signUp.error">
+				No such menu number exists
+				</span>
+				<br> 
+
+			<button id="btn-form"
+				ng-disabled="signForm.$invalid"
+				ng-click="signUp.submit()">Submit</button>
+
+		</form>
+	</fieldset>
+	<div ng-if="signUp.msg">{{signUp.msg}}</div>
+</div>
